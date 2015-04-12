@@ -1,0 +1,21 @@
+<h1>{{title}}</h1>
+
+<!-- 用于上传的form表单 -->
+<form method="post" enctype="multipart/form-data" action="/file-upload/iframe" target="hidden_frame">
+  <div>用户：<input type="text" name="username"></div>
+  <div>密码：<input type="password" name="password"></div>
+  <div><input type="file" name="upload1" multiple="multiple"></div>
+  <div><input type="file" name="upload2" multiple="multiple"></div>
+  <input type="submit">
+</form>
+
+<!-- 隐藏的iframe -->
+<iframe src="hidden_frame" id="hidden_frame" name="hidden_frame" style="display: none;"></iframe>
+<div id="msg"></div>
+
+<script>
+  /* 结果回调函数 */
+  function callback(result) {
+    document.getElementById("msg").innerHTML = "<span>"+result+"</span>";
+  }
+</script>

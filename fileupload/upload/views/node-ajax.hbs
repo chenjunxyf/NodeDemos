@@ -1,0 +1,34 @@
+<h1>{{title}}</h1>
+
+<!-- 上传表单 -->
+<form method="post" enctype="multipart/form-data" id="uploadform">
+  <div>用户：<input type="text" name="username"></div>
+  <div>密码：<input type="password" name="password"></div>
+  <div><input type="file" name="upload1" multiple="multiple"></div>
+  <div><input type="file" name="upload2" multiple="multiple"></div>
+  <input type="button" id="upload" value="上传">
+</form>
+
+<p id="msg"></p>
+
+<script src="/javascripts/jquery-2.1.1.min.js"></script>
+<script>
+  $('#upload').click(function() {
+    // 创建formdata对象
+    var formData = new FormData($('#uploadform')[0]);
+    $.ajax({
+      url: '/file-upload/ajax',
+      type: 'post',
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(data) {
+        $('#msg').text('success!!');
+      },
+      error: function() {
+        $('#msg').text('error!!');
+      }
+    });
+  });
+</script>
