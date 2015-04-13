@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iframe</title>
+</head>
+<body>
+  <iframe id="iframe" src="index.html" frameborder="0" scrolling="no" style="border: 0px;"></iframe>
+  <script>
+    function autoHeight(iframe) {
+      if (iframe) {
+        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+        if (iframeWin.document.body) {
+          iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+          iframe.width = iframeWin.document.documentElement.scrollWidth || iframeWin.document.body.scrollWidth;
+        }
+      }
+    }
+    window.onload = function() {
+      autoHeight(document.getElementById('iframe'));
+    }
+  </script>
+</body>
+</html>

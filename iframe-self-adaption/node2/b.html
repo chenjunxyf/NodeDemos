@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>b</title>
+</head>
+
+<body>
+  <img src="ghost.png" alt="ghost" style="width:600px; height: 300px;">
+
+  <iframe id="b_iframe" src="http://localhost:8887/agent.html" height="0" width="0" frameborder="0" style="display: none;"></iframe>
+
+  <script>
+    (function autoHeight() {
+      var width = Math.max(document.body.scrollWidth, document.body.clientWidth);
+      var height = Math.max(document.body.scrollHeight, document.body.clientHeight);
+      var b_iframe = document.getElementById("b_iframe");
+      b_iframe.src = b_iframe.src + "#" + width + "|" + height;
+    })();
+  </script>
+</body>
+</html>

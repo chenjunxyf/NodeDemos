@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>agent</title>
+</head>
+<body>
+  <script>
+    var a_iframe = window.parent.parent.document.getElementById("a_iframe");
+    var hash_url = window.location.hash;
+    if (hash_url.indexOf("#") >= 0) {
+      var hash_width = hash_url.split("#")[1].split("|")[0] + "px";
+      var hash_height = hash_url.split("#")[1].split("|")[1] + "px";
+      a_iframe.style.width = hash_width;
+      a_iframe.style.height = hash_height;
+    }
+  </script>
+</body>
+</html>
