@@ -12,3 +12,26 @@ iframe自适应，同域和跨域下实现
 
 * 利用iframe实现
 * 利用ajax实现
+
+## 豆瓣爬虫
+
+利用nodejs实现一个豆瓣的爬虫，使用到的工具包：
+
+* [cheerio](https://github.com/cheeriojs/cheerio "cheerio")
+* [async](https://github.com/caolan/async "async")
+* [mysql](https://github.com/felixge/node-mysql "mysql")
+* [request](https://github.com/request/request "request")
+
+**遇到的问题：**
+
+1） 某些网页不让爬取
+
+解决方法：设置合理的`User-Agent`，模仿浏览器行为
+
+2）有的用户没有id，直接就是一个个性域名
+
+解决方法：舍弃
+
+3）抓取太频繁，被封号！服务器返回403
+
+利用`setInterval()`函数，设置合理的抓取间隔

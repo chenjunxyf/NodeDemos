@@ -1,0 +1,14 @@
+{
+  "name": "douban-crawler",
+  "version": "0.0.1",
+  "description": "豆瓣小组成员电影信息爬取",
+  "engines": {
+    "node": ">=0.10.33"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "cheerio": "^0.19.0",
+    "mysql": "^2.6.2",
+    "request": "^2.55.0"
+  }
+}
