@@ -31,11 +31,15 @@ exports.userList = function(url, callback) {
   // url请求
   request(url, function(err, res) {
     // 异常退出
-    if (err || res.statusCode !== 200) {
+/*    if (err || res.statusCode !== 200) {
      console.error(err || res.statusCode);
      return callback(err || res.statusCode);
-   }
-     // 用户信息存储
+    }*/
+
+    // 状态码不为200不处理，否则影响程序运行
+    if (err) return callback(err);
+
+    // 用户信息存储
     var users = [];
     // 根据网页内容创建DOM操作对象
     var $ = cheerio.load(res.body.toString());
@@ -72,10 +76,13 @@ exports.userList = function(url, callback) {
 exports.movieList = function(url, callback) {
   request(url, function(err, res) {
     // 异常退出
-    if (err || res.statusCode !== 200) {
+/*    if (err || res.statusCode !== 200) {
       console.error(err || res.statusCode);
       return callback(err || res.statusCode);
-    }
+    }*/
+
+    // 状态码不为200不处理，否则影响程序运行
+    if (err) return callback(err);
 
     // 电影信息信息存储
     var movies = [];

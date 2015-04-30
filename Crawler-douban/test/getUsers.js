@@ -1,6 +1,6 @@
 var originRequest = require('request');
 var cheerio = require('cheerio');
-var db = require('/crawler/db');
+var db = require('../crawler/db');
 var conf = require('../config');
 
 /**
