@@ -48,6 +48,7 @@ exports.userList = function(url, callback) {
     $('.member-list .name a').each(function() {
       var $me = $(this);
       var item = {
+        // 用户名
         name: $me.text().trim()
       };
 
@@ -55,6 +56,8 @@ exports.userList = function(url, callback) {
       var s = $me.attr('href').match(/^.+\/(\d+)\/$/);
       if (Array.isArray(s)) {
         item.id = s[1];
+        // 用户已看电影的url
+        // 基础格式为：http://movie.douban.com/people/?/collect
         item.url = conf.douban.movieUrl.replace(/\?/, s[1]);
         users.push(item);
       }
