@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>petri</title>
+</head>
+<style>
+</style>
+<body>
+    <div id="main" style="height: 600px; width: 800px;border: 1px solid grey;margin: 0 auto;"></div>
+    <script src="javascripts/echarts.js"></script>
+    <script>
+      require.config({
+        paths: {
+          echarts: 'javascripts'
+        }
+      });
+      require(
+      [
+        'echarts',
+        'echarts/chart/force'
+      ], function(ec) {
+        var myChart = ec.init(document.getElementById('main'));
+        var option = {
+            title : {
+                text: 'Petri网模型',
+                subtext: '数据来自BI应用',
+                x:'right',
+                y:'bottom'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: '{a} : {b}'
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    restore : {show: true},
+                    magicType: {show: true, type: ['force', 'chord']},
+                    saveAsImage : {show: true}
+                }
+            },
+            legend: {
+                x: 'left',
+                data:['库所','变迁']
+            },
+            series : [
+                {
+                    type:'force',
+                    name : "节点名称",
+                    ribbonType: false,
+                    categories : [
+                        {
+                            name: '库所'
+                        },
+                        {
+                            name: '变迁',
+                            symbol: 'rectangle'
+                        }
+                    ],
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: true,
+                                textStyle: {
+                                    color: '#333'
+                                }
+                            },
+                            nodeStyle : {
+                                brushType : 'both',
+                                borderColor : 'rgba(255,215,0,0.4)',
+                                borderWidth : 1
+                            },
+                            linkStyle: {
+                                type: 'curve'
+                            }
+                        },
+                        emphasis: {
+                            label: {
+                                show: false
+                                // textStyle: null      // 默认使用全局文本样式，详见TEXTSTYLE
+                            },
+                            nodeStyle : {
+                                //r: 30
+                            },
+                            linkStyle : {}
+                        }
+                    },
+                    useWorker: false,
+                    minRadius : 15,
+                    maxRadius : 25,
+                    gravity: 0.8,
+                    scaling: 1.2,
+                    //roam: 'move',
+                    //draggable: false,
+                    linkSymbol: 'arrow',
+                    nodes:[
+                        {category:0, name: 'start', value : 8},
+                        {category:1, name: 'etl1',value : 10},
+                        {category:1, name: 'etl2',value : 10},
+                        {category:1, name: 'etl3',value : 10},
+                        {category:1, name: 'etl4',value : 10},
+                        {category:1, name: 'etl5',value : 10},
+                        {category:1, name: 'etl6',value : 10},
+                        {category:1, name: 'etl7',value : 10},
+                        {category:1, name: 'report',value : 10},
+                        {category:0, name: 'fork1',value : 9},
+                        {category:0, name: 'fork2',value : 9},
+                        {category:0, name: 'join1',value : 9},
+                        {category:0, name: 'join2',value : 9},
+                        {category:0, name: 'end',value : 8}
+                    ],
+                    links : [
+                        {source : 'start', target : 'etl1'},
+                        {source : 'etl1', target : 'fork1'},
+                        {source : 'fork1', target : 'etl2'},
+                        {source : 'fork1', target : 'etl3'},
+                        {source : 'etl2', target : 'join1'},
+                        {source : 'etl3', target : 'join1'},
+                        {source : 'join1', target : 'etl4'},
+                        {source : 'etl4', target : 'fork2'},
+                        {source : 'fork2', target : 'etl5'},
+                        {source : 'fork2', target : 'etl6'},
+                        {source : 'fork2', target : 'etl7'},
+                        {source : 'etl5', target : 'join2'},
+                        {source : 'etl6', target : 'join2'},
+                        {source : 'etl7', target : 'join2'},
+                        {source : 'join2', target : 'report'},
+                        {source : 'report', target : 'end'}
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+      });
+    </script>
+</body>
+</html>

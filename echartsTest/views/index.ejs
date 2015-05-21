@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+</head>
+<body>
+  <div id="main" style="height: 400px; width: 800px; margin: 0 auto;"></div>
+  <script src="javascripts/echarts.js"></script>
+  <script>
+    require.config({
+      paths: {
+        echarts: 'javascripts'
+      }
+    });
+    require(
+      [
+        'echarts',
+        'echarts/chart/bar'
+      ],
+      function(ec) {
+        var myChart = ec.init(document.getElementById('main'));
+        var option = {
+          tooltip: {
+            show: true
+          },
+          legend: {
+            data: ['销量']
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value'
+            }
+          ],
+          series: [
+            {
+              "name":"销量",
+              "type":"bar",
+              "data":[5, 20, 40, 10, 10, 20]
+            }
+          ]
+        }; // option
+        myChart.setOption(option);
+      });
+  </script>
+</body>
+</html>

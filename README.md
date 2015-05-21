@@ -13,7 +13,7 @@ iframe自适应，同域和跨域下实现
 * 利用iframe实现
 * 利用ajax实现
 
-## 豆瓣爬虫
+## 豆瓣爬虫（Crawler-douban）
 
 利用nodejs实现一个豆瓣的爬虫，使用到的工具包：
 
@@ -35,3 +35,7 @@ iframe自适应，同域和跨域下实现
 3）抓取太频繁，被封号！服务器返回403
 
 利用`setInterval()`函数，设置合理的抓取间隔
+
+## echarts的简单使用（echartsTest）
+
+nodejs+express+[echarts](http://echarts.baidu.com/index.html "Echarts")
