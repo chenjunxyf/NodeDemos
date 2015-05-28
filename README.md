@@ -39,3 +39,13 @@ iframe自适应，同域和跨域下实现
 ## echarts的简单使用（echartsTest）
 
 nodejs+express+[echarts](http://echarts.baidu.com/index.html "Echarts")
+
+## 跨终端Web实例（cross-terminal）
+
+实例来自鬼道师兄的《夸终端Web》
+
+测试URL：
+
+* http://localhost:3000/proxy/WindowsPhone?url=http://www.tmall.com
+* http://localhost:3000/proxy/iphone?url=http://www.tmall.com
+* http://localhost:3000/proxy/ipad?url=http://www.tmall.com
