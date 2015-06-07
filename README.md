@@ -13,7 +13,7 @@ iframe自适应，同域和跨域下实现
 * 利用iframe实现
 * 利用ajax实现
 
-## 豆瓣爬虫（Crawler-douban）
+## 豆瓣爬虫（crawler-douban）
 
 利用nodejs实现一个豆瓣的爬虫，使用到的工具包：
 
@@ -49,3 +49,13 @@ nodejs+express+[echarts](http://echarts.baidu.com/index.html "Echarts")
 * http://localhost:3000/proxy/WindowsPhone?url=http://www.tmall.com
 * http://localhost:3000/proxy/iphone?url=http://www.tmall.com
 * http://localhost:3000/proxy/ipad?url=http://www.tmall.com
+
+## 多种跨域的具体实现（cross-domain）
+
+* jsonp
+* cors
+* document.domain
+* URL.hash
+* cross-fragment
+* window.name
+* postMessage

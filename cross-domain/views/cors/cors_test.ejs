@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cors</title>
+</head>
+<body>
+  <div>CORS TEST</div>
+
+  <script>
+    // 创建XHR 对象.
+    function createCORSRequest(method, url) {
+      var xhr = new XMLHttpRequest();
+      if ("withCredentials" in xhr) {
+        // XHR for Chrome/Firefox/Opera/Safari.
+        xhr.open(method, url, true);
+      } else if (typeof XDomainRequest != "undefined") {
+        // XDomainRequest for IE.
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+      } else {
+        // 不支持CORS.
+        xhr = null;
+      }
+      return xhr;
+    }
+
+    function getTitle(text) {
+      return text.match('<title>(.*)?</title>')[1];
+    }
+
+    // 发起CORS请求
+    function makeCorsRequest() {
+      var url = 'http://www.otherapp.com/cors_data';
+      var xhr = createCORSRequest('GET', url);
+      if (!xhr) {
+        alert('CORS not supported!');
+        return;
+      }
+
+      // 响应处理
+      xhr.onload = function() {
+        var text = xhr.responseText;
+        alert(text);
+      }
+      xhr.onerror = function() {
+        alert('Woops, there was an error making the request.');
+      }
+
+      xhr.send();
+    }
+
+    makeCorsRequest();
+  </script>
+</body>
+</html>

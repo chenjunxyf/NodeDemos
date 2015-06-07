@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsonp</title>
+</head>
+<body>
+  <div>JSONP TEST</div>
+  <script>
+    function dosomething(jsondata) {
+      alert(jsondata.name + " " + jsondata.age);
+    }
+  </script>
+  <script src="http://www.otherapp.com/jsonp_data?callback=dosomething"></script>
+</body>
+</html>
