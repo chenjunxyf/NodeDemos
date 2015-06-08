@@ -25,4 +25,14 @@ router.get('/cors_data', function(req, res) {
   res.end(JSON.stringify(data));
 });
 
+/* document-domain Test */
+router.get('/document_domain_test', function(req, res) {
+  res.render('document-domain/document_domain_test');
+});
+
+router.get('/test_iframe', function(req, res) {
+  res.render('document-domain/test_iframe');
+});
+
+
 module.exports = router;

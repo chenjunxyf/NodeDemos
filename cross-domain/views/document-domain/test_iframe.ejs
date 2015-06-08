@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document-domain</title>
+</head>
+<body>
+  <div></div>
+
+  <script>
+    document.domain = 'myapp.com';
+    function sayHello(str) {
+        document.querySelector('div').innerHTML = str;
+        parent.sayHello('Hello father');
+    }
+  </script>
+</body>
+</html>

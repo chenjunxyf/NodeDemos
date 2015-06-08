@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document-domain</title>
+</head>
+<body>
+
+  <button>测试</button>
+  <div></div>
+  <iframe id="ifr" src="http://sample.myapp.com/test_iframe"></iframe>
+
+  <script>
+      document.domain = "myapp.com";
+      function sayHello(str) {
+        document.querySelector('div').innerHTML = str;
+      }
+      document.querySelector('button').onclick = function() {
+        document.querySelector('#ifr').contentWindow.sayHello('Hello son');
+      }
+  </script>
+</body>
+</html>
