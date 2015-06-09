@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>url hash</title>
+</head>
+<body>
+
+  <button>发送消息</button>
+  <iframe id="ifr" src="http://www.otherapp.com/hash_iframe"></iframe>
+  <script>
+    var target = "http://www.otherapp.com/hash_iframe";
+    function sendMsg(msg) {
+      var data = {msg: msg};
+      var src = target + "#" + JSON.stringify(data);
+      document.getElementById('ifr').src = src;
+    }
+    document.querySelector('button').onclick = function() {
+      sendMsg("Time: " + (new Date()));
+    }
+  </script>
+</body>
+</html>

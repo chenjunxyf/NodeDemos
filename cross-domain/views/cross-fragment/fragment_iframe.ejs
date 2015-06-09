@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cross fragment</title>
+</head>
+<body>
+  <div></div>
+  <script>
+    function getData(data) {
+      document.querySelector('div').innerHTML = "收到的消息：" + data;
+      var frame = document.createElement("frame");
+      var baseProxy = "http://www.myapp.com/fragment_res_proxy";
+
+      // 将接收的数据扩大一百倍
+      var request = {data: data * 100};
+      frame.src = baseProxy + "#" + encodeURI(JSON.stringify(request));
+      frame.style.display = "none";
+      document.body.appendChild(frame);
+    }
+  </script>
+</body>
+</html>

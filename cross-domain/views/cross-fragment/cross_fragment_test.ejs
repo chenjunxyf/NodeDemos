@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cross fragment</title>
+</head>
+<body>
+  <button>发送消息</button>
+  <div></div>
+  <iframe id="otherapp" name="otherapp" src="http://www.otherapp.com/fragment_iframe"></iframe>
+
+  <script>
+    function sendMsg(msg) {
+      var frame = document.createElement("iframe");
+      var baseProxy = "http://www.otherapp.com/fragment_req_proxy";
+      var request = {frameName: "otherapp", data: msg};
+      frame.src = baseProxy + "#" + encodeURI(JSON.stringify(request));
+      frame.style.display = "none";
+      document.body.appendChild(frame);
+    }
+    // 响应处理函数
+    function getResponse(data) {
+      document.querySelector('div').innerHTML = "收到结果：" + data;
+    }
+    document.querySelector('button').onclick = function() {
+      // 发送一个随机数
+      sendMsg(Math.random());
+    }
+  </script>
+</body>
+</html>

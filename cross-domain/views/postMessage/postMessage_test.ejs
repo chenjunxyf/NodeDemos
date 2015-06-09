@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>postMessage</title>
+</head>
+<body>
+  <div></div>
+  <iframe name="otherApp" id="otherApp" src="http://www.otherapp.com/postMessage_iframe"></iframe>
+  <script>
+    function handleReceive(event) {
+      if (event.origin != "http://www.otherapp.com") return;
+      // 处理数据
+      var data = JSON.parse(event.data);
+      document.querySelector('div').innerHTML = "来自iframe的颜色：" + data.color;
+      var otherAppFrame = window.frames["otherApp"];
+      otherAppFrame.postMessage("ok", "http://www.otherapp.com");
+    }
+    window.addEventListener("message", handleReceive, false);
+  </script>
+</body>
+</html>

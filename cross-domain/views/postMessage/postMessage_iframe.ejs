@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>postMessage</title>
+</head>
+<body>
+  <div></div>
+  <script>
+    function postMessage(msg) {
+      var targetWindow = parent.window;
+      targetWindow.postMessage(msg, "*");
+    }
+    function handleReceive(msg) {
+      if (msg.data === "ok") {
+        document.querySelector('div').innerHTML = "消息发送成功";
+      } else {
+        postMessage(JSON.stringify({color: 'red'}));
+      }
+    }
+    window.addEventListener("message", handleReceive, false);
+    window.onload = function() {
+      postMessage(JSON.stringify({color: 'red'}));
+    }
+  </script>
+</body>
+</html>

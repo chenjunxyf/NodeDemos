@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>window name</title>
+</head>
+<body>
+  <script>
+    var hash = window.location.hash;
+    if (hash && hash.length > 1) {
+      var request = hash.slice(1, hash.length);
+      var obj = JSON.parse(decodeURI(request));
+      var data = obj.data;
+      window.name = data*100;
+    }
+  </script>
+</body>
+</html>
